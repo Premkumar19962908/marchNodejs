@@ -1,0 +1,177 @@
+{
+    
+    "openapi":"3.0.0" ,
+    "info":{
+        "description":"This is the api for users",
+        "version":"__version__"
+    },
+    "tags":[
+        {
+            "name":"PUBLIC ROUTE",
+            "description":"PUBLIC ROUTE"
+        }
+    ],
+    "paths":{
+        "/health":{
+            "summary":"Check your health",
+            "get":{
+                "description":"check your health",
+                "tags":["PUBLIC ROUT"],
+                "responses":{
+                    "200":{
+                        "description":"Health check pass"
+                    },
+                    "404":{
+                        "description":"No Route Found For Health"
+                    }
+                }
+            }
+        },
+        "/users":{
+            "summary":"Testing users",
+            "get":{
+                "description":"get all users",
+                "tags":["PUBLIC ROUTE"],
+                "parameters":[
+                    {
+                        "in":"query",
+                        "name":"role",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "description":"chose role as admin or user"
+                    },
+                    {
+                        "in":"query",
+                        "name":"city",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "description":"chose city of user "
+                    }
+
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Health check pass"
+                    },
+                    "404":{
+                        "description":"No Route Found For Health"
+                    }
+                }
+            }
+        },
+        "/user/{id}":{
+            "summary":"Testing particular users",
+            "get":{
+                "description":"get particular users",
+                "tags":["PUBLIC ROUT"],
+                "parameters":[
+                    {
+                        "in":"path",
+                        "name":"id",
+                        "schema":{
+                            "type":"string"
+                        },
+                        "description":"enter user id"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"getting particular user by id"
+                    },
+                    "404":{
+                        "description":"No Route Found For Health"
+                    }
+                }
+            }
+        },
+        "/adduser":{
+            "summary":"Add New USer",
+            "post":{
+                "description":"adding new user",
+                "tags":["PUBLIC ROUT"],
+                "requestBody":{
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "name":"Ajay",
+                                "city":"Hyd",
+                                "phone":800,
+                                "role":"Admin",
+                                "isActive":true
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":" user added"
+                    }
+                }
+            }
+        },
+        "/updateUser":{
+            "summary":"Update User",
+            "put":{
+                "description":"Update User",
+                "tags":["PUBLIC ROUT"],
+                "requestBody":{
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "_id":"624480e13033ebbc11b6d33b",
+                                "name":"Arushi",
+                                "city":"Venice",
+                                "phone":887676788,
+                                "role":"User",
+                                "isActive":true
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"User Update"
+                    }
+                }
+            }
+        },
+        "/deleteUser":{
+            "summary":"Delete User",
+            "delete":{
+                "description":"Delete User",
+                "tags":["PUBLIC ROUT"],
+                "requestBody":{
+                    "required":true,
+                    "content":{
+                        "application/json":{
+                            "schema":{
+                                "type":"object",
+                                "id":"string"
+                            },
+                            "example":{
+                                "_id":"624480e13033ebbc11b6d33b"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "200":{
+                        "description":"User Delete"
+                    }
+                }
+            }
+        }
+    }
+}
